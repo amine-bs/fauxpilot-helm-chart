@@ -52,7 +52,6 @@ spec:
             - sh
             - -c
             - |
-              apt-get upgrade && \
               wget -q https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc && \
               chmod +x /usr/local/bin/mc && \
               mkdir /model && \
@@ -66,14 +65,7 @@ spec:
               containerPort: 8001
             - name: metrics
               containerPort: 8002
-          livenessProbe:
-            httpGet:
-              path: /v2/health/ready
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /v2/health/ready
-              port: http
+
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

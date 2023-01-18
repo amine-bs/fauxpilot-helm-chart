@@ -19,7 +19,7 @@ image:
 s3:
   access_key_id: ""
   secret_access_key: ""
-  endpoint: ""
+  endpoint: "https://minio.lab.sspcloud.fr"
   region: "us-east-1"
 
 imagePullSecrets: []
