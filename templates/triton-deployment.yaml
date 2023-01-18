@@ -65,7 +65,16 @@ spec:
               containerPort: 8001
             - name: metrics
               containerPort: 8002
-
+          livenessProbe:
+            httpGet:
+              path: /v2/health/ready
+              port: http
+            initialDelaySeconds: 300
+          readinessProbe:
+            httpGet:
+              path: /v2/health/ready
+              port: http
+            initialDelaySeconds: 300
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
