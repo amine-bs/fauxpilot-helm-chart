@@ -9,14 +9,14 @@ Expand the name of the chart.
 Expand the name of triton.
 */}}
 {{- define "fauxpilot.nameTriton" -}}
-{{ include "fauxpilot.name" }}-triton
+{{ include "fauxpilot.name" . }}-triton
 {{- end }}
 
 {{/*
 Expand the name of proxy.
 */}}
 {{- define "fauxpilot.nameProxy" -}}
-{{ include "fauxpilot.name" }}-proxy
+{{ include "fauxpilot.name" . }}-proxy
 {{- end }}
 
 {{/*
@@ -69,6 +69,15 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
+
+{{/*
+common Selector labels
+*/}}
+{{- define "fauxpilot.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "fauxpilot.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
 
 {{/*
 Selector labels for triton
