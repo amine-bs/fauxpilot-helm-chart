@@ -91,7 +91,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Selector labels for triton
 */}}
 {{- define "fauxpilot.selectorLabelsProxy" -}}
-app.kubernetes.io/name: {{ include "fauxpilot.nameTriton" . }}
+app.kubernetes.io/name: {{ include "fauxpilot.nameProxy" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
